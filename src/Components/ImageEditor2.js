@@ -83,9 +83,6 @@ const ImageUploadComponent = () => {
 
     return (
         <div>
-            {!user && router.push("/")
-                /* If user not loggedIn redirect to Login Page */
-            }
             <div className='flex w-[100%] h-[100%] bg-black'>
                 <div className='flex flex-col w-[75vw] h-[100vh] bg-white justify-center items-center' ref={imageContainerRef}>
                     {image === null ? null : (

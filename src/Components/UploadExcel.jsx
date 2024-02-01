@@ -52,10 +52,6 @@ const UploadExcel = () => {
 
     return (
         <div>
-            {!user && router.push("/")
-                /* If user not loggedIn redirect to Login Page */
-            }
-
             <div className="min-w-[100vw] h-[100vh] bg-black">
                 {names.length === 0 ? (
                     <div className="grid place-items-center">

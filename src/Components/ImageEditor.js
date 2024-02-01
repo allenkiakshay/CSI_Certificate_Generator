@@ -16,11 +16,10 @@ const ImageUpload = () => {
     e.target.files[0] ? setImage(e.target.files[0]) : setImage(null);
     dispatch(addimage(e.target.files[0]));
   }
+  
+  
   return (
     <div>
-      {!user && router.push("/")
-        /* If user not loggedIn redirect to Login Page */
-      }
       <div className='w-[100vw] h-[100vh] bg-black'>
         {image === null ? (
           <div className="grid place-items-center">

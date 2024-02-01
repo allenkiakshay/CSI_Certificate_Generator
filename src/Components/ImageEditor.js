@@ -4,11 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { addimage } from '@/redux/slice/user';
+import { useRouter } from 'next/navigation';
 
 const ImageUpload = () => {
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userState.user);
+  const router = useRouter();
 
   const handleFileUpload = (e) => {
     e.target.files[0] ? setImage(e.target.files[0]) : setImage(null);

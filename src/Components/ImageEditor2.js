@@ -102,7 +102,7 @@ const ImageUploadComponent = () => {
                         </h1>
                     </Draggable>
                     {textInputs.map((input, index) => (
-                        <Draggable onDrag={(e, ui) => handleDrag(e, ui, index)} defaultPosition={input.position} className="text-white">
+                        <Draggable onDrag={(e, ui) => handleDrag(e, ui, index)} defaultPosition={input.position} className="text-white" key={index}>
                             <h1 style={{ fontSize: `${input.size}px`, fontFamily: `${input.fontfam}`, color: `${input.colour}`, width: 'fit-content' }}>
                                 {input.text}
                             </h1>
@@ -125,7 +125,7 @@ const ImageUploadComponent = () => {
                         <input type="text" value={CertIdcolour} onChange={(e) => setCertIdColour(e.target.value)} placeholder="Type Font Colour" onClick={(e) => e.stopPropagation()} className="w-[300px] h-[60px] m-[20px] text-center mb-2 bg-black border-[2px] border-white text-white" />
                         {textInputs.map((input, index) => (
                             <>
-                                <div className='flex gap-40'>
+                                <div className='flex gap-40' key={index}>
                                     <h1 className='text-white text-2xl'>&middot; Field {index + 1}</h1>
                                     <button onClick={() => removeTextInput(index)}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">

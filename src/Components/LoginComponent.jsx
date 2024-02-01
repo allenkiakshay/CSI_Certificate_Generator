@@ -15,9 +15,7 @@ const Login = () => {
     const handleSignInWithGoogle = () => {
         signInWithPopup(auth, provider)
             .then((data) => {
-                console.log(data.user.email);
                 dispatch(adduser(data.user.email));
-                console.log(user);
             })
             .catch((error) => {
                 console.log(error);

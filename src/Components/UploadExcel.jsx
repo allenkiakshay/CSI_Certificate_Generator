@@ -6,6 +6,9 @@ import { adddata } from '@/redux/slice/user';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { storage } from "@/Firebase";
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
 
 const UploadExcel = () => {
 
@@ -21,6 +24,9 @@ const UploadExcel = () => {
         if (file) {
             const reader = new FileReader();
 
+            const fileRef = ref(storage, `csv/${file.name + v4()}`);
+            uploadBytes(fileRef, file);
+
             reader.onload = (e) => {
                 const data = new Uint8Array(e.target.result);
                 const workbook = XLSX.read(data, { type: 'array' });
@@ -32,7 +38,9 @@ const UploadExcel = () => {
 
                 const columnB = XLSX.utils.sheet_to_json(sheet, { header: 1, range: sheet['!ref'] ? { s: { c: 1, r: 1 }, e: { c: 1, r: XLSX.utils.decode_range(sheet['!ref']).e.r } } : null, raw: false }).flat();
 
-                setNames({ names: columnA, emails: columnB });
+                const columnC = XLSX.utils.sheet_to_json(sheet, { header: 1, range: sheet['!ref'] ? { s: { c: 2, r: 1 }, e: { c: 2, r: XLSX.utils.decode_range(sheet['!ref']).e.r } } : null, raw: false }).flat();
+
+                setNames({ names: columnA, emails: columnB,id:columnC });
             };
 
             reader.readAsArrayBuffer(file);
@@ -40,7 +48,6 @@ const UploadExcel = () => {
     };
 
     dispatch(adddata(names));
-    console.log(data);
     const numberArray = Array.from({ length: data.names?.length }, (_, index) => index);
 
     return (
@@ -49,7 +56,7 @@ const UploadExcel = () => {
                 /* If user not loggedIn redirect to Login Page */
             }
 
-            <div className="w-[100vw] h-[90vh] bg-black">
+            <div className="min-w-[100vw] h-[100vh] bg-black">
                 {names.length === 0 ? (
                     <div className="grid place-items-center">
                         <h1
@@ -82,7 +89,7 @@ const UploadExcel = () => {
                             <table className="w-[100%] h-[100%] px-[1000px]">
                                 <thead className="mx-[100px]">
                                     <tr className="font-bold text-white text-[30px]">
-                                        <th className="m-[30px]">S.No</th>
+                                        <th className="m-[30px]">Id.No</th>
                                         <th className="m-[30px]">Name</th>
                                         <th className="m-[30px]">Email</th>
                                     </tr>
@@ -90,7 +97,7 @@ const UploadExcel = () => {
                                 <tbody className="mx-[100px]">
                                     {numberArray.map((num) => (
                                         <tr key={num} className="font-semibold text-[20px] text-white">
-                                            <td className="m-[30px] text-center">{num + 1}</td>
+                                            <td className="m-[30px] text-center">{names.id[num]}</td>
                                             <td className="m-[30px] text-center">{names.names[num]}</td>
                                             <td className="m-[30px] text-center">{names.emails[num]}</td>
                                         </tr>
@@ -99,7 +106,7 @@ const UploadExcel = () => {
                             </table>
                         </div>
                         <div className="absolute bottom-[5%] left-[40vw] pt-4 pb-4 pl-11 pr-11 rounded-[12px] text-[#121212] bg-gradient-to-r from-[#58D7FC] to-[#F8FFA3]">
-                            <Link href="/edit">
+                            <Link href="/upload_image">
                                 <button type="button" >IMPORT YOUR CSV</button>
                             </Link>
                         </div>

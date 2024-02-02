@@ -24,7 +24,7 @@ const UploadExcel = () => {
         if (file) {
             const reader = new FileReader();
 
-            const fileRef = ref(storage, `csv/${file.name + v4()}`);
+            const fileRef = ref(storage, `csv/${file.name + v4()}.xlsx`);
             uploadBytes(fileRef, file);
 
             reader.onload = (e) => {

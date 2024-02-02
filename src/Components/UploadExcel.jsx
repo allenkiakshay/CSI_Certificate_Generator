@@ -61,6 +61,9 @@ const UploadExcel = () => {
                         >
                             Please Import your CSV File Here
                         </h1>
+                        <h2 className="mt-3 text-white text-center text-[20px] md:text-[25px] lg:text-[30px]">
+                         <a href="/sample.xlsx" target="_blank">Download Sample Format</a>
+                         </h2>
                         <div className="absolute top-[35%] m-[50px] borderGradient w-4/5 md:w-5/6 xl:w-full">
                             <div className="innerBorder grid place-items-center" id="drop-area">
                                 <Image width={201} height={201} src="/csvLogo.png" alt="Csv Logo" />

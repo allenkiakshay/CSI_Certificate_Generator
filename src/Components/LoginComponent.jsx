@@ -25,7 +25,7 @@ const Login = () => {
     return (
         <div>
             {
-                !!user && !!Object.keys(user).length && router.push("/upload_user_data")
+                !!user && !!Object.keys(user).length && router.push("/home")
                 /* If there exist a user then redirect to Home Page */
             }
             {/* <button onClick={handleSignInWithGoogle}>SignIn</button> */}
@@ -40,7 +40,7 @@ const Login = () => {
                     <div>
                         <button
                             type="submit"
-                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10"
+                            className="w-full bg-gradient-to-r from-[#58D7FC] to-[#F8FFA3] text-black font-bold py-2 px-4 rounded mt-10"
                             onClick={handleSignInWithGoogle}
                         >
                             Sign In with Google
@@ -49,7 +49,7 @@ const Login = () => {
                     <div>
                         <button
                             type="submit"
-                            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10"
+                            className="w-full bg-gradient-to-r from-[#58D7FC] to-[#F8FFA3] text-black font-bold py-2 px-4 rounded mt-10"
                             onClick={handleSignInWithGoogle}
                         >
                             Sign Up with Google

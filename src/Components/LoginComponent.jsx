@@ -29,15 +29,15 @@ const Login = () => {
                 /* If there exist a user then redirect to Home Page */
             }
             {/* <button onClick={handleSignInWithGoogle}>SignIn</button> */}
-            <div className='flex w-[100vw] h-[100vh] items-center bg-black'>
-                <Image src="/form.png" alt="" width={600} height={600} />
-                <div className="relative max-w-md mr-12 mt-[5px] ml-auto ">
+            <div className='flex w-[100vw] h-[100vh] items-center bg-[black] gap-[50px] justify-center'>
+                <Image src="/form.png" alt="" width={600} height={600} className="bg-black flex-1"/>
+                <div className="relative mt-[5px] bg-black flex-1">
 
                     <span className="inline-flex items-baseline">
                         <img src="/download.jpeg" alt="" className="self-center w-11 h-11 full mx-1" />
                         <span><h2 className='font-bold text-white text-[24px]'>Certificate Generator</h2></span>
                     </span>
-                    <div>
+                    <div className="max-w-[450px]">
                         <button
                             type="submit"
                             className="w-full bg-gradient-to-r from-[#58D7FC] to-[#F8FFA3] text-black font-bold py-2 px-4 rounded mt-10"
@@ -46,7 +46,7 @@ const Login = () => {
                             Sign In with Google
                         </button>
                     </div>
-                    <div>
+                    <div className="max-w-[450px]">
                         <button
                             type="submit"
                             className="w-full bg-gradient-to-r from-[#58D7FC] to-[#F8FFA3] text-black font-bold py-2 px-4 rounded mt-10"
